@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% block title %}{{ product.name }} — WineKart{% endblock %}
+{% block content %}
+<div class="product-detail-wrap">
+  <article class="product-detail panel">
+    <div class="detail-image">
+      <img src="{{ product.image }}" alt="{{ product.name }}" onerror="this.style.display='none';this.nextElementSibling.style.display='grid'">
+      <span class="detail-fallback">{{ product.emoji }}</span>
+    </div>
+    <div class="detail-content">
+      <p class="eyebrow">SINGLE PRODUCT · ORDER ONLINE</p>
+      <h1>{{ product.name }}</h1>
+      <p class="detail-description">{{ product.description }}</p>
+      <strong class="detail-price">₹{{ '%.0f'|format(product.price) }}</strong>
+      <p class="free-delivery-note">🚚 Delivery charges: FREE (₹0)</p>
+      <p class="hint">Choose quantity and continue to customer details. Your order total is product price × quantity.</p>
+      <form method="post" action="{{ url_for('order_now', product_id=product.id) }}" class="detail-order-form">
+        <label for="quantity">Select quantity</label>
+        <div class="quantity-control">
+          <button type="button" onclick="this.nextElementSibling.stepDown();if(this.nextElementSibling.value<1)this.nextElementSibling.value=1" aria-label="Decrease quantity">−</button>
+          <input id="quantity" name="quantity" type="number" min="1" max="99" value="1" required>
+          <button type="button" onclick="const q=this.previousElementSibling;q.stepUp();if(q.value>99)q.value=99" aria-label="Increase quantity">+</button>
+        </div>
+        <button class="button dark full" type="submit">Order Now →</button>
+      </form>
+      <p class="legal-note">Alcohol products may only be ordered by adults of legal drinking age where permitted by local law. Age and legal eligibility may be verified.</p>
+    </div>
+  </article>
+</div>
+<style>
+.free-delivery-note{display:inline-block;background:#eff6d8;color:#536b10;padding:9px 13px;border-radius:24px;font-size:13px;font-weight:700;margin:8px 0 12px}
+.legal-note{font-size:11px;line-height:1.5;color:#777;margin-top:18px}
+</style>
+{% endblock %}
