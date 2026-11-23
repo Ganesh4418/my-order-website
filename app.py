@@ -5,11 +5,11 @@ from urllib.parse import quote
 import os
 
 app = Flask(__name__)
-app.secret_key = "change-this-to-a-long-random-secret-key"
+app.secret_key = os.environ.get("SECRET_KEY")
 DB_PATH = Path(__file__).with_name("orders.db")
 # Replace with the vendor WhatsApp number, country code included, digits only.
 # Example India: 919876543210 (no +, spaces, or dashes).
-VENDOR_WHATSAPP = os.getenv("VENDOR_WHATSAPP", "9908849867")
+VENDOR_WHATSAPP = os.getenv("VENDOR_WHATSAPP", "919908849867")
 
 PRODUCTS = [
     # Change these details to your own single product.
