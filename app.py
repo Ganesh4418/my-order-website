@@ -631,7 +631,7 @@ def checkout():
 
             [
                 f"- {item['quantity']} x "
-                f"{item['name']} (₹{item['line_total']})"
+                f"{item['name']} (AED {item['line_total']})"
 
                 for item in items
             ]
