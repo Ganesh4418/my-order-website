@@ -13,7 +13,7 @@ VENDOR_WHATSAPP = os.getenv("VENDOR_WHATSAPP", "9908849867")
 
 PRODUCTS = [
     # Change these details to your own single product.
-    {"id": 1, "name": "Royal Stag", "description": "A standard full bottle of Royal Stag whisky 750 ml", "price": 40, "emoji": "📦", "image": "/static/RSW.avif", "category": "Product"},
+    {"id": 1, "name": "Royal Stag", "description": "A standard full bottle of Royal Stag whisky 750 ml", "price": 40, "emoji": "📦", "image": "/RSW.avif", "category": "Product"},
 ]
 PRODUCT_BY_ID = {p["id"]: p for p in PRODUCTS}
 
